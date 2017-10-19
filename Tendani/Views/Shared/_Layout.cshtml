@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script type='text/javascript'>
+        var appInsights = window.appInsights ||
+            function(config) {
+                function r(config) {
+                    t[config] = function() {
+                        var i = arguments;
+                        t.queue.push(function() { t[config].apply(t, i) })
+                    }
+                }
+
+                var t = { config: config }, u = document, e = window, o = 'script', s = u.createElement(o), i, f;
+                for (s.src = config.url || '//az416426.vo.msecnd.net/scripts/a/ai.0.js', u.getElementsByTagName(o)[0]
+                        .parentNode.appendChild(s), t.cookie = u.cookie, t
+                        .queue = [], i = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Ajax'];
+                    i.length;
+                ) r('track' + i.pop());
+                return r('setAuthenticatedUserContext'), r('clearAuthenticatedUserContext'), config
+                    .disableExceptionTracking ||
+                    (i = 'onerror', r('_' + i), f = e[i], e[i] = function(config, r, u, e, o) {
+                        var s = f && f(config, r, u, e, o);
+                        return s !== !0 && t['_' + i](config, r, u, e, o), s
+                    }), t
+            }({
+                instrumentationKey: 'b9045163-e617-4c3c-9ee8-1f153c770a67'
+            });
+
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    </script>
+    <style>
+        .form-control {
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid body-content">
+    <div class="col-md-2">
+
+
+        <div class="accordion">
+            <h5 class="accordion-toggle"><i class="glyphicon glyphicon-folder-close"></i> &nbsp; Advanced Search</h5>
+            <div class="accordion-content">
+                <p>
+                    Results
+                </p>
+            </div>
+
+            <h5 class="accordion-toggle"> <i class="glyphicon glyphicon-folder-close"></i>&nbsp; Administration</h5>
+            <div class="accordion-content">
+                <ul>
+                    <li>
+                        <a href="~/Procedures/Create">Add Procedure</a>
+                    </li>
+                    <li>
+                        <a href="~/Applicationusers/Admin">Administrators</a>
+                    </li>
+                    <li>
+                        <a href="~/Applicationusers">Users</a>
+                    </li>
+                    <li>
+                        <a href="~/Configuration">Configuration</a>
+                    </li>
+                </ul>
+            </div>
+
+            <h4 class="accordion-toggle">Accordion 3</h4>
+            <div class="accordion-content">
+                <p>
+                    Vivamus facilisisnibh scelerisque laoreet.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-10">
+        <div class="navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("KPMG Fulcrum", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="navbar-default">
+            &nbsp;
+        </div>
+
+            @RenderBody()
+        </div>
+    <hr/>
+
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.accordion').find('.accordion-toggle').click(function() {
+            $(this).next().slideToggle('600');
+            $(".accordion-content").not($(this).next()).slideUp('600');
+        });
+        $('.accordion-toggle').on('click',
+            function() {
+                $(this).toggleClass('active').siblings().removeClass('active');
+            });
+    });
+
+</script>
+@RenderSection("scripts", required: false)
+
+</body>
+</html>
